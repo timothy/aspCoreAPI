@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspCoreAPI.Controllers
 {
+    [Route("api/cities")]//or [Route("api/[controller]")]
     public class CitiesController : Controller
     {
-        [HttpGet("api/cities")]
+        [HttpGet()]//or [HttpGet("api/cities")]
         public JsonResult GetCities()
         {
             return new JsonResult(new List<object>()
