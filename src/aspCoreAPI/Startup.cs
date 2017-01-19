@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+//using Newtonsoft.Json.Serialization;
 
 namespace aspCoreAPI
 {
@@ -17,6 +18,14 @@ namespace aspCoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+/*                .AddJsonOptions(o =>
+                            {
+                                if (o.SerializerSettings.ContractResolver != null)
+                                {
+                                    var castedResolver = o.SerializerSettings.ContractResolver as DefaultContractResolver;
+                                    castedResolver.NamingStrategy = null;//do this to return json attribute names exactly as defined in the class or create a custom naming strategy
+                                }
+                            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
