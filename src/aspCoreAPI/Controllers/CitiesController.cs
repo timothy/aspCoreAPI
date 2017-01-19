@@ -14,5 +14,13 @@ namespace aspCoreAPI.Controllers
         {
             return new JsonResult(CitiesDataStore.Current.Cities);
         }
+
+        [HttpGet("{id}")]//[HttpGet("api/cities/{id}")]
+        public JsonResult GetCity(int id)
+        {
+            return new JsonResult(
+                CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id)
+                );
+        }
     }
 }
