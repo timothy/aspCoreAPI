@@ -10,17 +10,22 @@ namespace aspCoreAPI.Controllers
     public class CitiesController : Controller
     {
         [HttpGet()]//or [HttpGet("api/cities")]
-        public JsonResult GetCities()
+        public IActionResult GetCities()//JsonResult GetCities()
         {
-            return new JsonResult(CitiesDataStore.Current.Cities);
+            return Ok(CitiesDataStore.Current.Cities);
         }
 
         [HttpGet("{id}")]//[HttpGet("api/cities/{id}")]
-        public JsonResult GetCity(int id)
+        public IActionResult GetCity(int id)
         {
-            return new JsonResult(
-                CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id)
-                );
+            var cityToReturn = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id);
+
+            if (cityToReturn == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(cityToReturn);
         }
     }
 }

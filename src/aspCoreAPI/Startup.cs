@@ -33,6 +33,8 @@ namespace aspCoreAPI
                 app.UseExceptionHandler();
             }*/
 
+            app.UseStatusCodePages();//returns HTML page with error status code when necessary
+
             app.UseMvc();
 
 /*            app.Run(async (context) =>
